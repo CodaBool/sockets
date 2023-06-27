@@ -1,15 +1,12 @@
-const { createServer } = require("http")
-const { Server } = require("socket.io")
-const { createAdapter } = require("@socket.io/cluster-adapter")
-const { setupWorker } = require("@socket.io/sticky")
-
-const httpServer = createServer()
-const io = new Server(httpServer)
-
-io.adapter(createAdapter())
-
-setupWorker(io)
+import { Server } from "socket.io"
+const io = new Server(3000, {
+  cors: { origin: "*" }
+})
 
 io.on("connection", (socket) => {
-  console.log(`typer connect ${socket.id}`)
+  console.log('slap connection,', socket.id)
+  socket.emit("hi", 1, "2", { 3: Buffer.from([4]) });
+  socket.on("hi", (...args) => {
+    console.log("SLAP: got hi from client")
+  })
 })
