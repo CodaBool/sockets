@@ -1,7 +1,6 @@
 {
   "name": "basic-socker-test",
   "version": "1.0.0",
-  "type": "module",
   "author": "codabool",
   "scripts": {
     "start": "vite",
