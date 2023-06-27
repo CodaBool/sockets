@@ -3,7 +3,9 @@ import { io } from "socket.io-client"
 
 export default function Main() {
   useEffect(() => {
-    const socket = io("ws://localhost:3000")
+    const socket = io("ws://54.211.184.77:3000", {
+      transports: ["websocket"]
+    })
 
     // send a message to the server
     socket.emit("hi", 5, "6", { 7: Uint8Array.from([8]) })

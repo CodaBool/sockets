@@ -8,26 +8,12 @@
 ### App
 npm install -g @socket.io/pm2
 
-sudo yum install nginx -y
-sudo systemctl start nginx
-sudo systemctl enable  nginx
+#sudo yum install nginx -y
+#sudo systemctl start nginx
+#sudo systemctl enable  nginx
 
 git clone https://github.com/CodaBool/sockets.git
 
 
 ### PM2
-pm2 start app.js
-
-
-module.exports = {
-  apps : [{
-    name: "typer",
-    script: "./app.js",
-  }, {
-     name: 'slap',
-     script: 'worker.js'
-  }, {
-     name: 'bool',
-     script: 'worker.js'
-  }]
-}
+pm2 start sockets.config.cjs
